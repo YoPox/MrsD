@@ -15,9 +15,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
-
-import org.w3c.dom.Text;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -50,12 +49,57 @@ public class Main extends Activity implements ActionBar.TabListener {
 
     String LOG_TAG = "MRS D";
     List<String> custom30w = new ArrayList<String>();
-    List<Integer> smileyId = new ArrayList<Integer>();// http://bisondiversitycenter.com/sitebuildercontent/sitebuilderpictures/webassets/smileyFeelings.jpg
+    int[] smileyId = {R.drawable.smiley_01,
+            R.drawable.smiley_02,
+            R.drawable.smiley_03,
+            R.drawable.smiley_04,
+            R.drawable.smiley_05,
+            R.drawable.smiley_06,
+            R.drawable.smiley_07,
+            R.drawable.smiley_08,
+            R.drawable.smiley_09,
+            R.drawable.smiley_10,
+            R.drawable.smiley_11,
+            R.drawable.smiley_12,
+            R.drawable.smiley_13,
+            R.drawable.smiley_14,
+            R.drawable.smiley_15,
+            R.drawable.smiley_16,
+            R.drawable.smiley_17,
+            R.drawable.smiley_18,
+            R.drawable.smiley_19,
+            R.drawable.smiley_20,
+            R.drawable.smiley_21};
+
+    String[] smileyNoms = {
+            "Aggressive",
+            "Agonized = Angoissé",
+            "Anxious",
+            "Apologetic",
+            "Arrogant",
+            "Bashful = Timide",
+            "Blissful = Divin",
+            "Bored",
+            "Cautious = Prudent",
+            "Cold",
+            "Concentrating",
+            "Confident = Sûr",
+            "Curious",
+            "Demure = Sage",
+            "Determined",
+            "Disappointed",
+            "Dissaproving",
+            "Disbelieving = Incrédule",
+            "Disgusted",
+            "Distasteful = Désagréable",
+            "Eavesdropping = Espion"
+    };
 
     TextView tvd1;
     TextView tvd2;
     TextView tvb1;
     TextView tvb2;
+    ImageView smileyView;
     int allMot = 0;
     int angMot = 0;
     boolean smiley = false;
@@ -149,46 +193,58 @@ public class Main extends Activity implements ActionBar.TabListener {
     public void nextD(View view) {
 
         int old = angMot;
-tvd2 = (TextView) findViewById(R.id.textAnswer);
-tvd2.setText("");
-        if(!smiley){
+        tvd2 = (TextView) findViewById(R.id.textAnswer);
+        tvd2.setText("");
+        if (!smiley) {
             while (angMot == old)
                 angMot = (int) Math.floor(Math.random() * custom30w.size());
 
             tvd1 = (TextView) findViewById(R.id.textToFind);
             tvd1.setText(custom30w.get(angMot));
         } else {
-// Changer le smiley
+            // Changer le smiley
+            while (angMot == old)
+                angMot = (int) Math.floor(Math.random() * smileyId.length);
+            smileyView = (ImageView) findViewById(R.id.imageView);
+            smileyView.setImageResource(smileyId[angMot]);
         }
     }
 
     public void checkD(View view) {
 
         tvd2 = (TextView) findViewById(R.id.textAnswer);
-        if (angMot % 2 == 0) {
-            tvd2.setText(custom30w.get(angMot + 1));
+        if (!smiley) {
+            if (angMot % 2 == 0) {
+                tvd2.setText(custom30w.get(angMot + 1));
+            } else {
+                tvd2.setText(custom30w.get(angMot - 1));
+            }
         } else {
-            tvd2.setText(custom30w.get(angMot - 1));
+            tvd2.setText(smileyNoms[angMot]);
         }
     }
 
-public void switchs(View view) {
-    
+    public void switchs(View view) {
+
         //On vide les textview
         tvd2 = (TextView) findViewById(R.id.textAnswer);
         tvd2.setText("");
         tvd1 = (TextView) findViewById(R.id.textToFind);
         tvd1.setText("");
-//On vide le smiley
+        //On vide le smiley
+        smileyView = (ImageView) findViewById(R.id.imageView);
+        smileyView.setImageResource(0);
 
-    if(smiley) { // On passe en vue mots
-        //on affiche un mot
-        next(view);
-        smiley = false;
+        if (smiley) { // On passe en vue mots
+            smiley = false;
+            //on affiche un mot
+            next(view);
         } else { // On passe en vue smiley
-        //on affiche un smiley
-        nexts(view);
-smiley = true; }}
+            smiley = true;
+            //on affiche un smiley
+            nextD(view);
+        }
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
