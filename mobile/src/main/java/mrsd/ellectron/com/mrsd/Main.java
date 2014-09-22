@@ -50,7 +50,7 @@ public class Main extends Activity implements ActionBar.TabListener {
 
     String LOG_TAG = "MRS D";
     List<String> custom30w = new ArrayList<String>();
-    List<Integer> smileyId = new ArrayList<Integer>();
+    List<Integer> smileyId = new ArrayList<Integer>();// http://bisondiversitycenter.com/sitebuildercontent/sitebuilderpictures/webassets/smileyFeelings.jpg
 
     TextView tvd1;
     TextView tvd2;
