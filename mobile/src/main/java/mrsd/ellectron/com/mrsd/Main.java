@@ -50,6 +50,7 @@ public class Main extends Activity implements ActionBar.TabListener {
 
     String LOG_TAG = "MRS D";
     List<String> custom30w = new ArrayList<String>();
+    List<Integer> smileyId = new ArrayList<Integer>();
 
     TextView tvd1;
     TextView tvd2;
@@ -148,15 +149,16 @@ public class Main extends Activity implements ActionBar.TabListener {
     public void nextD(View view) {
 
         int old = angMot;
-
+tvd2 = (TextView) findViewById(R.id.textAnswer);
+tvd2.setText("");
         if(!smiley){
             while (angMot == old)
                 angMot = (int) Math.floor(Math.random() * custom30w.size());
 
-            tvd2 = (TextView) findViewById(R.id.textAnswer);
-            tvd2.setText("");
             tvd1 = (TextView) findViewById(R.id.textToFind);
             tvd1.setText(custom30w.get(angMot));
+        } else {
+// Changer le smiley
         }
     }
 
@@ -169,6 +171,24 @@ public class Main extends Activity implements ActionBar.TabListener {
             tvd2.setText(custom30w.get(angMot - 1));
         }
     }
+
+public void switchs(View view) {
+    
+        //On vide les textview
+        tvd2 = (TextView) findViewById(R.id.textAnswer);
+        tvd2.setText("");
+        tvd1 = (TextView) findViewById(R.id.textToFind);
+        tvd1.setText("");
+//On vide le smiley
+
+    if(smiley) { // On passe en vue mots
+        //on affiche un mot
+        next(view);
+        smiley = false;
+        } else { // On passe en vue smiley
+        //on affiche un smiley
+        nexts(view);
+smiley = true; }}
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -245,7 +265,7 @@ public class Main extends Activity implements ActionBar.TabListener {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
+// Récupérer les smileys et les mettre dans la liste smileyId
 
     }
 
