@@ -238,7 +238,7 @@ public class Main extends Activity implements ActionBar.TabListener {
         if (smiley) { // On passe en vue mots
             smiley = false;
             //on affiche un mot
-            next(view);
+            nextD(view);
         } else { // On passe en vue smiley
             smiley = true;
             //on affiche un smiley
