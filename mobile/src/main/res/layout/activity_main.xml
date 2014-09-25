@@ -1,6 +1,72 @@
-<android.support.v4.view.ViewPager xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/pager"
+<?xml version="1.0" encoding="utf-8"?>
+
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Main" />
+    android:orientation="vertical">
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/imageView"
+        android:layout_marginTop="60dp"
+        android:layout_gravity="center_horizontal|top" />
+
+    <ImageButton
+        android:background="@drawable/menu"
+        android:layout_width="75dp"
+        android:layout_height="75dp"
+        android:id="@+id/buttonList"
+        android:layout_gravity="left|bottom" />
+
+    <ImageButton
+        android:background="@drawable/smiley"
+        android:layout_width="75dp"
+        android:layout_height="75dp"
+        android:id="@+id/buttonSmiley"
+        android:layout_gravity="right|bottom"
+        android:onClick="switchs"/>
+
+    <Button
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:text="CHECK"
+        android:textSize="40dp"
+        android:background="@android:color/transparent"
+        android:id="@+id/buttonNext"
+        android:layout_marginBottom="100dp"
+        android:layout_gravity="center|bottom"
+        android:onClick="nextD"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Vocabulary"
+        android:layout_marginBottom="150dp"
+        android:id="@+id/textToFind"
+        android:layout_alignTop="@+id/imageView"
+        android:layout_centerHorizontal="true"
+        android:layout_gravity="center"
+        android:textSize="20dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text=""
+        android:layout_marginBottom="50dp"
+        android:id="@+id/textAnswer"
+        android:layout_alignTop="@+id/imageView"
+        android:layout_centerHorizontal="true"
+        android:layout_gravity="center"
+        android:textSize="20dp" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="50dp"
+        android:id="@+id/imageView2"
+        android:layout_gravity="center" />
+
+</FrameLayout>

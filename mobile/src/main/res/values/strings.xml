@@ -2,10 +2,5 @@
 <resources>
 
     <string name="app_name">Mrs D</string>
-    <string name="title_section1">Mrs D</string>
-    <string name="title_section2">Frau B</string>
-    <string name="hello_world">Hello world!</string>
-    <string name="action_settings">Settings</string>
-    <string name="title_activity_all_list">AllList</string>
 
 </resources>
