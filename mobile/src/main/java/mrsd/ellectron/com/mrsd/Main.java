@@ -45,7 +45,56 @@ public class Main extends Activity {
             R.drawable.smiley_18,
             R.drawable.smiley_19,
             R.drawable.smiley_20,
-            R.drawable.smiley_21};
+            R.drawable.smiley_21,
+            R.drawable.smiley_22,
+            R.drawable.smiley_23,
+            R.drawable.smiley_24,
+            R.drawable.smiley_25,
+            R.drawable.smiley_26,
+            R.drawable.smiley_27,
+            R.drawable.smiley_28,
+            R.drawable.smiley_29,
+            R.drawable.smiley_30,
+            R.drawable.smiley_31,
+            R.drawable.smiley_32,
+            R.drawable.smiley_33,
+            R.drawable.smiley_34,
+            R.drawable.smiley_35,
+            R.drawable.smiley_36,
+            R.drawable.smiley_37,
+            R.drawable.smiley_38,
+            R.drawable.smiley_39,
+            R.drawable.smiley_40,
+            R.drawable.smiley_41,
+            R.drawable.smiley_42,
+            R.drawable.smiley_43,
+            R.drawable.smiley_44,
+            R.drawable.smiley_45,
+            R.drawable.smiley_46,
+            R.drawable.smiley_47,
+            R.drawable.smiley_48,
+            R.drawable.smiley_49,
+            R.drawable.smiley_50,
+            R.drawable.smiley_51,
+            R.drawable.smiley_52,
+            R.drawable.smiley_53,
+            R.drawable.smiley_54,
+            R.drawable.smiley_55,
+            R.drawable.smiley_56,
+            R.drawable.smiley_57,
+            R.drawable.smiley_58,
+            R.drawable.smiley_59,
+            R.drawable.smiley_60,
+            R.drawable.smiley_61,
+            R.drawable.smiley_62,
+            R.drawable.smiley_63,
+            R.drawable.smiley_64,
+            R.drawable.smiley_65,
+            R.drawable.smiley_66,
+            R.drawable.smiley_67,
+            R.drawable.smiley_68,
+            R.drawable.smiley_69,
+            R.drawable.smiley_70};
 
     String[] smileyNoms = {
             "Aggressive",
@@ -68,17 +117,40 @@ public class Main extends Activity {
             "Disbelieving = Incrédule",
             "Disgusted",
             "Distasteful = Désagréable",
-            "Eavesdropping = Espion"
+            "Eavesdropping = Espion",
+            "Ecstatic",
+            "Enraged",
+            "Envious",
+            "Exasperated",
+            "Exhausted",
+            "Frightened",
+            "Frustated",
+            "Grieving",
+            "Guilty",
+            "Happy",
+            "Horrified",
+            "Hot",
+            "Hungover",
+            "Hurt",
+            "Hysterical",
+            "Indifferent",
+            "Idiotic",
+            "Innocent",
+            "Interested",
+            "Jealous",
+            "Joyful"
     };
 
     TextView tvd1;
     TextView tvd2;
+    TextView tv3;
     ImageView smileyView;
     Button b1;
     int angMot = 0;
     boolean smiley = false;
     private Typeface caviarDreams;
     private Typeface caviarDreamsBold;
+    private Typeface caviarDreamsItalic;
     boolean check = true;
 
     @Override
@@ -90,6 +162,7 @@ public class Main extends Activity {
 
         caviarDreams = Typeface.createFromAsset(getAssets(), "fonts/CaviarDreams.ttf");
         caviarDreamsBold = Typeface.createFromAsset(getAssets(), "fonts/CaviarDreams_Bold.ttf");
+        caviarDreamsItalic = Typeface.createFromAsset(getAssets(), "fonts/CaviarDreams_Italic.ttf");
         b1 = (Button) findViewById(R.id.buttonNext);
         b1.setTypeface(caviarDreams);
 
@@ -97,6 +170,8 @@ public class Main extends Activity {
         tvd2.setTypeface(caviarDreams);
         tvd1 = (TextView) findViewById(R.id.textToFind);
         tvd1.setTypeface(caviarDreamsBold);
+        tv3 = (TextView) findViewById(R.id.mrsD);
+        tv3.setTypeface(caviarDreamsItalic);
 
         // File stuff
 
@@ -169,7 +244,7 @@ public class Main extends Activity {
             } else {
                 // Changer le smiley
                 while (angMot == old)
-                    angMot = (int) Math.floor(Math.random() * smileyId.length);
+                    angMot = (int) Math.floor(Math.random() * smileyNoms.length);
                 smileyView = (ImageView) findViewById(R.id.imageView);
                 smileyView.setImageResource(smileyId[angMot]);
 
