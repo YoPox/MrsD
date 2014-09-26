@@ -4,7 +4,6 @@ import android.app.Activity;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.os.Environment;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -177,8 +176,7 @@ public class Main extends Activity {
         // File stuff
 
         // Dossier Mrs D
-        File file = new File(Environment.getExternalStoragePublicDirectory(
-                Environment.DIRECTORY_DOCUMENTS), "Mrs D");
+        File file = new File(Environment.getExternalStorageDirectory(), "Documents/Mrs D");
         file.mkdirs();
 
         // TODO : Parser les fichiers du dossier et créer un ArrayList à MainArrayList[index fichier]
@@ -188,8 +186,66 @@ public class Main extends Activity {
         if (!cust30.exists()) {
             try {
                 PrintWriter out = new PrintWriter(cust30.getPath());
-                out.println("Mot anglais");
-                out.println("Mot français");
+                out.println("On account of");
+                out.println("Étant donné ");
+                out.println("Furthermore ");
+                out.println("En outre");
+                out.println("On top of that");
+                out.println("De plus ");
+                out.println("Into the bargain");
+                out.println("Par dessus le marché");
+                out.println("As against");
+                out.println("En opposition à ");
+                out.println("Conversely");
+                out.println("Inversement");
+                out.println("Otherwise");
+                out.println("Autrement");
+                out.println("Although / Though ");
+                out.println("Bien que");
+                out.println("No matter how");
+                out.println("Peu importe comment");
+                out.println("No matter what");
+                out.println("Peu importe ce que");
+                out.println("Yet / Still");
+                out.println("Pourtant");
+                out.println("Nonetheless");
+                out.println("Néanmoins");
+                out.println("Despite");
+                out.println("Malgré");
+                out.println("Whenever");
+                out.println("A chaque fois que");
+                out.println("Meanwhile");
+                out.println("Pendant ce temps là");
+                out.println("In the meantime");
+                out.println("Entre temps");
+                out.println("At times");
+                out.println("Parfois");
+                out.println("Provided");
+                out.println("Pourvu que / A condition que");
+                out.println("Till / Until");
+                out.println("Jusqu'à (ce que)");
+                out.println("At first sight");
+                out.println("A première vue");
+                out.println("At all events");
+                out.println("En tout cas");
+                out.println("To some extent ");
+                out.println("Dans une certaine mesure");
+                out.println("On second thoughts");
+                out.println("A la réflexion");
+                out.println("Anyway");
+                out.println("De toutes façons");
+                out.println("In this respect");
+                out.println("A cet égard");
+                out.println("Namely ");
+                out.println("C'est à dire");
+                out.println("Above all");
+                out.println("Surtout");
+                out.println("Owing to");
+                out.println("En raison de");
+                out.println("Due to");
+                out.println("Du fait de");
+                out.println("Hence");
+                out.println("D'où ");
                 out.close();
             } catch (FileNotFoundException e) {
                 e.printStackTrace();
@@ -283,9 +339,9 @@ public class Main extends Activity {
 
     }
 
-    public void clickBig(){
+    public void clickBig() {
         b1 = (Button) findViewById(R.id.buttonNext);
-        if(check){
+        if (check) {
             check = !check;
             b1.setText("NEXT");
         } else {
