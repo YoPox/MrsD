@@ -151,7 +151,7 @@ public class Main extends Activity {
     private Typeface caviarDreams;
     private Typeface caviarDreamsBold;
     private Typeface caviarDreamsItalic;
-    boolean check = true;
+    boolean check = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -165,6 +165,7 @@ public class Main extends Activity {
         caviarDreamsItalic = Typeface.createFromAsset(getAssets(), "fonts/CaviarDreams_Italic.ttf");
         b1 = (Button) findViewById(R.id.buttonNext);
         b1.setTypeface(caviarDreams);
+        b1.setText("NEXT");
 
         tvd2 = (TextView) findViewById(R.id.textAnswer);
         tvd2.setTypeface(caviarDreams);
