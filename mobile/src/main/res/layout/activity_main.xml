@@ -3,13 +3,54 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="#f5f5f5">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_gravity="top">
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="75dp"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="Mrs D"
+            android:textColor="#e7e9fd"
+            android:background="@color/top"
+            android:paddingTop="10dp"
+            android:paddingLeft="10dp"
+            android:id="@+id/mrsD"
+            android:textSize="50dp" />
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="100dp"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="Vocabulary"
+            android:id="@+id/textToFind"
+            android:textSize="20dp"
+            android:gravity="center" />
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="100dp"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text=""
+            android:background="@color/grey"
+            android:id="@+id/textAnswer"
+            android:layout_gravity="center"
+            android:textSize="20dp"
+            android:gravity="center" />
+
+    </LinearLayout>
 
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/imageView"
-        android:layout_marginTop="80dp"
+        android:layout_marginTop="70dp"
         android:layout_gravity="center_horizontal|top" />
 
     <ImageButton
@@ -25,7 +66,7 @@
         android:layout_height="75dp"
         android:id="@+id/buttonSmiley"
         android:layout_gravity="right|bottom"
-        android:onClick="switchs"/>
+        android:onClick="switchs" />
 
     <Button
         android:layout_width="150dp"
@@ -36,47 +77,6 @@
         android:id="@+id/buttonNext"
         android:layout_marginBottom="100dp"
         android:layout_gravity="center|bottom"
-        android:onClick="nextD"/>
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Vocabulary"
-        android:layout_marginBottom="150dp"
-        android:layout_marginTop="20dp"
-        android:id="@+id/textToFind"
-        android:layout_alignTop="@+id/imageView"
-        android:layout_centerHorizontal="true"
-        android:layout_gravity="center"
-        android:textSize="20dp"
-        android:gravity="center" />
-
-    <TextView
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text=""
-        android:layout_marginBottom="50dp"
-        android:layout_marginTop="20dp"
-        android:id="@+id/textAnswer"
-        android:layout_alignTop="@+id/imageView"
-        android:layout_centerHorizontal="true"
-        android:layout_gravity="center"
-        android:textSize="20dp"
-        android:gravity="center" />
-
-    <TextView
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Mrs D"
-        android:layout_marginTop="10dp"
-        android:layout_marginLeft="10dp"
-        android:id="@+id/mrsD"
-        android:layout_alignTop="@+id/imageView"
-        android:layout_centerHorizontal="true"
-        android:layout_gravity="top"
-        android:textSize="50dp" />
+        android:onClick="nextD" />
 
 </FrameLayout>

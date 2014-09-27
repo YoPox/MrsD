@@ -24,6 +24,8 @@ public class Main extends Activity {
 
     String LOG_TAG = "MRS D";
     List<String> custom30w = new ArrayList<String>();
+    List<String> names = new ArrayList<String>();
+    List<List<String>> categories = new ArrayList<List<String>>();
     int[] smileyId = {R.drawable.smiley_01,
             R.drawable.smiley_02,
             R.drawable.smiley_03,
@@ -187,7 +189,7 @@ public class Main extends Activity {
             try {
                 PrintWriter out = new PrintWriter(cust30.getPath());
                 out.println("On account of");
-                out.println("Étant donné ");
+                out.println("Étant donné");
                 out.println("Furthermore ");
                 out.println("En outre");
                 out.println("On top of that");
@@ -236,7 +238,7 @@ public class Main extends Activity {
                 out.println("De toutes façons");
                 out.println("In this respect");
                 out.println("A cet égard");
-                out.println("Namely ");
+                out.println("Namely");
                 out.println("C'est à dire");
                 out.println("Above all");
                 out.println("Surtout");
@@ -245,7 +247,7 @@ public class Main extends Activity {
                 out.println("Due to");
                 out.println("Du fait de");
                 out.println("Hence");
-                out.println("D'où ");
+                out.println("D'où");
                 out.close();
             } catch (FileNotFoundException e) {
                 e.printStackTrace();

@@ -8,8 +8,8 @@ android {
         applicationId "mrsd.ellectron.com.mrsd"
         minSdkVersion 15
         targetSdkVersion 20
-        versionCode 8
-        versionName "0.3.2"
+        versionCode 9
+        versionName "0.4"
     }
     buildTypes {
         release {
