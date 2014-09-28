@@ -16,16 +16,11 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
-import java.util.ArrayList;
-import java.util.List;
 
 
 public class Main extends Activity {
 
     String LOG_TAG = "MRS D";
-    List<String> custom30w = new ArrayList<String>();
-    List<String> names = new ArrayList<String>();
-    List<List<String>> categories = new ArrayList<List<String>>();
     int[] smileyId = {R.drawable.smiley_01,
             R.drawable.smiley_02,
             R.drawable.smiley_03,
@@ -154,6 +149,8 @@ public class Main extends Activity {
     private Typeface caviarDreamsItalic;
     boolean check = false;
 
+    WordFinder wordFinder = new WordFinder();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -181,28 +178,26 @@ public class Main extends Activity {
         File file = new File(Environment.getExternalStorageDirectory(), "Documents/Mrs D");
         file.mkdirs();
 
-        // TODO : Parser les fichiers du dossier et créer un ArrayList à MainArrayList[index fichier]
-
         // 30 Mots Custom
-        File cust30 = new File(file.getPath() + "/30.txt");
+        File cust30 = new File(file.getPath() + "/30 mots.txt");
         if (!cust30.exists()) {
             try {
                 PrintWriter out = new PrintWriter(cust30.getPath());
                 out.println("On account of");
                 out.println("Étant donné");
-                out.println("Furthermore ");
+                out.println("Furthermore");
                 out.println("En outre");
                 out.println("On top of that");
                 out.println("De plus ");
                 out.println("Into the bargain");
                 out.println("Par dessus le marché");
                 out.println("As against");
-                out.println("En opposition à ");
+                out.println("En opposition à");
                 out.println("Conversely");
                 out.println("Inversement");
                 out.println("Otherwise");
                 out.println("Autrement");
-                out.println("Although / Though ");
+                out.println("Although / Though");
                 out.println("Bien que");
                 out.println("No matter how");
                 out.println("Peu importe comment");
@@ -252,24 +247,32 @@ public class Main extends Activity {
             } catch (FileNotFoundException e) {
                 e.printStackTrace();
             }
-
         }
-        try {
-            FileInputStream fis = new FileInputStream(cust30);
 
-            BufferedReader br = new BufferedReader(new InputStreamReader(fis));
+        // On parse les fichiers du dossier et on crée un ArrayList à categories[index] de nom names[index]
+        File[] files = file.listFiles();
 
-            String line = null;
-            while ((line = br.readLine()) != null) {
-                custom30w.add(line);
+        for (int a = 0; a < files.length; a++) {
+            File acttxt = files[a];
+            FileInputStream fis = null;
+            try {
+
+                fis = new FileInputStream(acttxt);
+                BufferedReader br = new BufferedReader(new InputStreamReader(fis));
+
+                wordFinder.addCategory();
+                wordFinder.addName(acttxt.getName());
+
+                String line = null;
+
+                while ((line = br.readLine()) != null) {
+                    wordFinder.addWord(a, line);
+                }
+                br.close();
+
+            } catch (IOException e) {
+                e.printStackTrace();
             }
-
-            br.close();
-
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
         }
 
     }
@@ -280,11 +283,7 @@ public class Main extends Activity {
 
             tvd2 = (TextView) findViewById(R.id.textAnswer);
             if (!smiley) {
-                if (angMot % 2 == 0) {
-                    tvd2.setText(custom30w.get(angMot + 1));
-                } else {
-                    tvd2.setText(custom30w.get(angMot - 1));
-                }
+                tvd2.setText(wordFinder.answer());
             } else {
                 tvd2.setText(smileyNoms[angMot]);
             }
@@ -295,11 +294,8 @@ public class Main extends Activity {
             tvd2 = (TextView) findViewById(R.id.textAnswer);
             tvd2.setText("");
             if (!smiley) {
-                while (angMot == old)
-                    angMot = (int) Math.floor(Math.random() * custom30w.size());
-
                 tvd1 = (TextView) findViewById(R.id.textToFind);
-                tvd1.setText(custom30w.get(angMot));
+                tvd1.setText(wordFinder.word());
             } else {
                 // Changer le smiley
                 while (angMot == old)
