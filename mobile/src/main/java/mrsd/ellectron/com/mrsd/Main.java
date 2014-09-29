@@ -1,6 +1,8 @@
 package mrsd.ellectron.com.mrsd;
 
 import android.app.Activity;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.os.Environment;
@@ -151,6 +153,9 @@ public class Main extends Activity {
 
     WordFinder wordFinder = new WordFinder();
 
+    public static final String PREFS_NAME = "MD";
+    int catNb;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -178,10 +183,14 @@ public class Main extends Activity {
         File file = new File(Environment.getExternalStorageDirectory(), "Documents/Mrs D");
         file.mkdirs();
 
+        // On parse les fichiers du dossier et on crée un ArrayList à categories[index] de nom names[index]
+        File[] files = file.listFiles();
+        catNb = files.length;
+
         // 30 Mots Custom
-        File cust30 = new File(file.getPath() + "/30 mots.txt");
-        if (!cust30.exists()) {
+        if (files.length == 0) {
             try {
+                File cust30 = new File(file.getPath() + "/30 mots");
                 PrintWriter out = new PrintWriter(cust30.getPath());
                 out.println("On account of");
                 out.println("Étant donné");
@@ -244,13 +253,12 @@ public class Main extends Activity {
                 out.println("Hence");
                 out.println("D'où");
                 out.close();
+                catNb++;
             } catch (FileNotFoundException e) {
                 e.printStackTrace();
             }
         }
 
-        // On parse les fichiers du dossier et on crée un ArrayList à categories[index] de nom names[index]
-        File[] files = file.listFiles();
 
         for (int a = 0; a < files.length; a++) {
             File acttxt = files[a];
@@ -262,6 +270,11 @@ public class Main extends Activity {
 
                 wordFinder.addCategory();
                 wordFinder.addName(acttxt.getName());
+
+                SharedPreferences settings = getSharedPreferences(PREFS_NAME, 0);
+                SharedPreferences.Editor editor = settings.edit();
+                editor.putString("n" + Integer.toString(a), acttxt.getName());
+                editor.commit();
 
                 String line = null;
 
@@ -349,4 +362,9 @@ public class Main extends Activity {
         }
     }
 
+    public void callList(View view) {
+        Intent intent = new Intent(this, ListActivity.class);
+        intent.putExtra("nb", catNb);
+        startActivity(intent);
+    }
 }
