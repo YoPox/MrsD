@@ -26,8 +26,6 @@ public class ListActivity extends Activity {
 
         cardsNb = getIntent().getIntExtra("nb", 0);
 
-        Log.i("cardsNb", Integer.toString(cardsNb));
-
         caviarDreamsItalic = Typeface.createFromAsset(getAssets(), "fonts/CaviarDreams_Italic.ttf");
 
         tv3 = (TextView) findViewById(R.id.mrsD2);
