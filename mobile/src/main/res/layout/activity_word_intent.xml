@@ -1,0 +1,49 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="mrsd.ellectron.com.mrsd.ListActivity"
+    android:id="@+id/llaytop"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="75dp"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Mrs D"
+        android:textColor="#e7e9fd"
+        android:background="@color/top"
+        android:paddingLeft="10dp"
+        android:id="@+id/mrsD2"
+        android:textSize="50dp"
+        android:paddingTop="10dp" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="+"
+        android:background="@android:color/transparent"
+        android:layout_marginTop="-67dp"
+        android:id="@+id/button"
+        android:layout_gravity="right"
+        android:textSize="50dp"
+        android:textColor="#e7e9fd"
+        android:onClick="add" />
+
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_marginBottom="-12dp"
+        android:layout_marginTop="8dp">
+
+        <LinearLayout xmlns:tools="http://schemas.android.com/tools"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:context="mrsd.ellectron.com.mrsd.ListActivity"
+            android:id="@+id/llay"
+            android:orientation="vertical">
+
+
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

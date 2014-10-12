@@ -1,13 +1,16 @@
 package mrsd.ellectron.com.mrsd;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -40,9 +43,24 @@ public class ListActivity extends Activity {
         for (int a = 0; a < cardsNb; a++) {
 
             //TODO: swap TextViews with cards
-            TextView card = new TextView(this);
-            card.setText(settings.getString("n" + Integer.toString(a), "BUG ! please report"));
-            ((LinearLayout) linearL).addView(card);
+            Button b = new Button(this);
+            b.setHeight(200);
+            b.setTag(a);
+            if (a % 2 == 0) {
+                b.setBackgroundResource(R.color.grey);
+            } else {
+                b.setBackgroundResource(R.color.white);
+            }
+            b.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(getBaseContext(), WordIntent.class);
+                    intent.putExtra("nb", (Integer) v.getTag());
+                    startActivity(intent);
+                }
+            });
+            b.setText(settings.getString("n" + Integer.toString(a), "BUG ! please report"));
+            ((LinearLayout) linearL).addView(b);
 
         }
 

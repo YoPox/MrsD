@@ -21,7 +21,13 @@
         </activity>
         <activity
             android:name=".ListActivity"
-            android:label="@string/title_activity_list" >
+            android:label="@string/title_activity_list"
+            android:screenOrientation="portrait"  >
+        </activity>
+        <activity
+            android:name=".WordIntent"
+            android:label="@string/title_activity_word_intent"
+            android:screenOrientation="portrait"  >
         </activity>
     </application>
 
