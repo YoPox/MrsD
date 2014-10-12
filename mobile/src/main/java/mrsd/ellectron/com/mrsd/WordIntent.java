@@ -81,8 +81,7 @@ public class WordIntent extends Activity {
         final View inflator = linf.inflate(R.layout.addword_dialog, null);
         AlertDialog.Builder alert = new AlertDialog.Builder(this);
 
-        alert.setTitle("Tilte");
-        alert.setMessage("Message");
+        alert.setTitle("Add a word");
         alert.setView(inflator);
 
         final EditText et1 = (EditText) inflator.findViewById(R.id.eng);

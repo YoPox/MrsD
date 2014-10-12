@@ -1,13 +1,18 @@
 package mrsd.ellectron.com.mrsd;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.os.Environment;
+import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -18,6 +23,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
+import java.util.Random;
 
 
 public class Main extends Activity {
@@ -139,6 +145,13 @@ public class Main extends Activity {
             "Joyful"
     };
 
+    String[][] quizz = {
+            {
+                    "3 façons de dire selon moi !",
+                    "As far as I'm concerned\nIn my opinion\nTo me\nAccording to me\nTo my mind"
+            }
+    };
+
     TextView tvd1;
     TextView tvd2;
     TextView tv3;
@@ -150,7 +163,6 @@ public class Main extends Activity {
     private Typeface caviarDreamsBold;
     private Typeface caviarDreamsItalic;
     boolean check = false;
-
     WordFinder wordFinder = new WordFinder();
 
     public static final String PREFS_NAME = "MD";
@@ -303,6 +315,8 @@ public class Main extends Activity {
 
         } else {
 
+            randomQuiz();
+
             int old = angMot;
             tvd2 = (TextView) findViewById(R.id.textAnswer);
             tvd2.setText("");
@@ -366,5 +380,43 @@ public class Main extends Activity {
         Intent intent = new Intent(this, ListActivity.class);
         intent.putExtra("nb", catNb);
         startActivity(intent);
+    }
+
+    public void randomQuiz() {
+        Random rand = new Random();
+        if (rand.nextInt(12) + 1 == 6) {
+            final int quiz = rand.nextInt(quizz.length);
+
+            final AlertDialog.Builder alert2 = new AlertDialog.Builder(this);
+            alert2.setCancelable(false);
+            alert2.setTitle("Master the rule !");
+
+            alert2.setMessage(quizz[quiz][1]);
+
+            alert2.setPositiveButton("I KNOW IT BY HEART !", new DialogInterface.OnClickListener() {
+                public void onClick(DialogInterface dialog, int whichButton) {
+                }
+            });
+
+            final AlertDialog.Builder alert = new AlertDialog.Builder(this);
+            alert.setCancelable(false);
+            alert.setTitle("Random Quiz !");
+
+            LayoutInflater linf = LayoutInflater.from(this);
+            final View inflator = linf.inflate(R.layout.randomquiz, null);
+
+            alert.setView(inflator);
+
+            final EditText et1 = (EditText) inflator.findViewById(R.id.txt);
+            et1.setHint(quizz[quiz][0]);
+
+            alert.setPositiveButton("DONE !", new DialogInterface.OnClickListener() {
+                public void onClick(DialogInterface dialog, int whichButton) {
+                   alert2.show();
+                }
+            });
+
+            alert.show();
+        }
     }
 }
