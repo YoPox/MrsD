@@ -6,7 +6,6 @@ import android.content.DialogInterface;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.os.Environment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -16,6 +15,7 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import java.io.BufferedInputStream;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
@@ -23,6 +23,7 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 
@@ -42,7 +43,6 @@ public class WordIntent extends Activity {
         setContentView(R.layout.activity_word_intent);
 
         fileNb = getIntent().getIntExtra("nb", 0);
-        Log.i("WordIntent", Integer.toString(fileNb));
 
         caviarDreamsItalic = Typeface.createFromAsset(getAssets(), "fonts/CaviarDreams_Italic.ttf");
 
@@ -96,14 +96,41 @@ public class WordIntent extends Activity {
 
                 FileOutputStream fos = null;
 
+                int count = 0;
+
                 try {
                     fos = new FileOutputStream(acttxt, true);
                     BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(fos));
 
-                    bw.newLine();
-                    bw.write(s1);
-                    bw.newLine();
-                    bw.write(s2);
+                    InputStream is = new BufferedInputStream(new FileInputStream(acttxt));
+                    try {
+                        byte[] c = new byte[1024];
+                        int readChars = 0;
+                        boolean empty = true;
+                        while ((readChars = is.read(c)) != -1) {
+                            empty = false;
+                            for (int i = 0; i < readChars; ++i) {
+                                if (c[i] == '\n') {
+                                    ++count;
+                                }
+                            }
+                        }
+                    } finally {
+                        is.close();
+                    }
+
+                    if (count % 2 == 0) {
+                        bw.write(s1);
+                        bw.newLine();
+                        bw.write(s2);
+                    } else {
+                        bw.newLine();
+                        bw.write(s1);
+                        bw.newLine();
+                        bw.write(s2);
+                        bw.newLine();
+                    }
+
 
                     bw.close();
                 } catch (FileNotFoundException e) {
