@@ -8,7 +8,6 @@ import android.content.SharedPreferences;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.os.Environment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
@@ -149,6 +148,38 @@ public class Main extends Activity {
             {
                     "3 façons de dire selon moi !",
                     "As far as I'm concerned\nIn my opinion\nTo me\nAccording to me\nTo my mind"
+            },
+            {
+                    "2 façons de dire selon moi !",
+                    "According to me\nAs far as I'm concerned\nIn my opinion\nTo me\nTo my mind"
+            },
+            {
+                    "Dans le coin\nEn haut\nAu milieu",
+                    "In the [top] [right] hand corner\nAt the top/bottom\nIn the middle"
+            },
+            {
+                    "3 façons de dire réussir !",
+                    "To achieve\nTo succeed in + ing\nTo manage to do something"
+            },
+            {
+                    "2 façons de dire réussir !",
+                    "To achieve\nTo succeed in + ing\nTo manage to do something"
+            },
+            {
+                    "3 façons d'exprimer l'envie !",
+                    "To look forward to + ing\nTo be eager to do sth\nTo long for\nTo yearn for"
+            },
+            {
+                    "2 façons d'exprimer l'envie !",
+                    "To look forward to + ing\nTo be eager to do sth\nTo long for\nTo yearn for"
+            },
+            {
+                    "10 mots de liaison ★★★ !",
+                    "At first signt\nOn second thoughts\nAt all events\nAnyway\nIn this respect\nNamely\nAbove all\nOwing to\nOn account of\nFurthermore\nInto the bargain\nConversely\nOtherwise\nNonetheless\nDespite\nNo matter how\n..."
+            },
+            {
+                    "5 mots de liaison ★★★ !",
+                    "As a matter of fact\nIn any case\nSince\nConsequently\nThus\nBesides\nProvided\n..."
             }
     };
 
@@ -167,6 +198,8 @@ public class Main extends Activity {
 
     public static final String PREFS_NAME = "MD";
     int catNb;
+    int oldNb = 0;
+    int quiz;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -385,8 +418,11 @@ public class Main extends Activity {
     public void randomQuiz() {
         Random rand = new Random();
         if (rand.nextInt(12) + 1 == 6) {
-            final int quiz = rand.nextInt(quizz.length);
+            quiz = rand.nextInt(quizz.length);
 
+            while (quiz == oldNb) quiz = rand.nextInt(quizz.length);
+
+            oldNb = quiz;
             final AlertDialog.Builder alert2 = new AlertDialog.Builder(this);
             alert2.setCancelable(false);
             alert2.setTitle("Master the rule !");
@@ -412,7 +448,7 @@ public class Main extends Activity {
 
             alert.setPositiveButton("DONE !", new DialogInterface.OnClickListener() {
                 public void onClick(DialogInterface dialog, int whichButton) {
-                   alert2.show();
+                    alert2.show();
                 }
             });
 
