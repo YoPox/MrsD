@@ -335,6 +335,44 @@ public class Main extends Activity {
 
     }
 
+    @Override
+    public void onResume(){
+        super.onResume();
+        //TODO: Check if new words were added
+
+        File file = new File(Environment.getExternalStorageDirectory(), "Documents/Mrs D");
+        File[] files = file.listFiles();
+        wordFinder = new WordFinder();
+        for (int a = 0; a < files.length; a++) {
+            File acttxt = files[a];
+            FileInputStream fis = null;
+            try {
+
+                fis = new FileInputStream(acttxt);
+                BufferedReader br = new BufferedReader(new InputStreamReader(fis));
+
+                wordFinder.addCategory();
+                wordFinder.addName(acttxt.getName());
+
+                SharedPreferences settings = getSharedPreferences(PREFS_NAME, 0);
+                SharedPreferences.Editor editor = settings.edit();
+                editor.putString("n" + Integer.toString(a), acttxt.getName());
+                editor.commit();
+
+                String line = null;
+
+                while ((line = br.readLine()) != null) {
+                    wordFinder.addWord(a, line);
+                }
+                br.close();
+
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+
+    }
+
     public void nextD(View view) {
 
         if (check) {

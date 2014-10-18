@@ -6,6 +6,7 @@ import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.Bundle;
+import android.support.v7.widget.CardView;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -41,6 +42,7 @@ public class ListActivity extends Activity {
         for (int a = 0; a < cardsNb; a++) {
 
             //TODO: swap TextViews with cards
+            // Oui mais au moins là ça marche
             Button b = new Button(this);
             b.setHeight(200);
             b.setTag(a);

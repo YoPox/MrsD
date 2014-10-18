@@ -32,7 +32,8 @@
             android:text="Vocabulary"
             android:id="@+id/textToFind"
             android:textSize="20dp"
-            android:gravity="center" />
+            android:gravity="center"
+            android:textColor="#000000"/>
 
         <TextView
             android:layout_width="fill_parent"
@@ -43,7 +44,8 @@
             android:id="@+id/textAnswer"
             android:layout_gravity="center"
             android:textSize="20dp"
-            android:gravity="center" />
+            android:gravity="center"
+            android:textColor="#000000" />
 
     </LinearLayout>
 
@@ -71,14 +73,14 @@
         android:onClick="switchs" />
 
     <Button
-        android:layout_width="150dp"
-        android:layout_height="wrap_content"
+        android:layout_width="225dp"
+        android:layout_height="80dp"
         android:text="CHECK"
         android:textSize="40dp"
-        android:background="@android:color/transparent"
+        android:background="?android:attr/selectableItemBackground"
         android:id="@+id/buttonNext"
         android:layout_marginBottom="100dp"
         android:layout_gravity="center|bottom"
-        android:onClick="nextD" />
+        android:onClick="nextD"/>
 
 </FrameLayout>
