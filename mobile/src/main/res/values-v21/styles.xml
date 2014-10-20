@@ -10,6 +10,7 @@
         <item name="android:colorPrimaryDark">@color/primary_dark</item>
         <!--   theme UI controls like checkboxes and text fields -->
         <item name="android:navigationBarColor">@color/primary_dark</item>
+        <item name="android:colorControlHighlight">@color/grible</item>
     </style>
 
 </resources>

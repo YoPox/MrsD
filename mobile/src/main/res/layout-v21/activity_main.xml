@@ -58,7 +58,7 @@
         android:layout_gravity="center_horizontal|top" />
 
     <ImageButton
-        android:background="@drawable/menu"
+        android:background="@drawable/ripple_list"
         android:layout_width="75dp"
         android:layout_height="75dp"
         android:id="@+id/buttonList"
@@ -66,7 +66,7 @@
         android:onClick="callList"/>
 
     <ImageButton
-        android:background="@drawable/smiley"
+        android:background="@drawable/ripple_smiley"
         android:layout_width="75dp"
         android:layout_height="75dp"
         android:id="@+id/buttonSmiley"
@@ -78,6 +78,7 @@
         android:layout_height="80dp"
         android:text="CHECK"
         android:textSize="40dp"
+        android:background="@drawable/ripple_big"
         android:id="@+id/buttonNext"
         android:layout_marginBottom="100dp"
         android:layout_gravity="center|bottom"
