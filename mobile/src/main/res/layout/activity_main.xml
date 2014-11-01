@@ -81,6 +81,7 @@
         android:id="@+id/buttonNext"
         android:layout_marginBottom="100dp"
         android:layout_gravity="center|bottom"
-        android:onClick="nextD" />
+        android:onClick="nextD"
+        android:background="@android:color/transparent" />
 
 </FrameLayout>
